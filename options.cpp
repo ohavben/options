@@ -1,5 +1,5 @@
-// #include <emscripten/bind.h>
-// #include <malloc.h>
+#include <emscripten/bind.h>
+#include <malloc.h>
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -29,7 +29,7 @@
 #include "json.hpp"
 
 using namespace std;
-//using namespace emscripten;
+using namespace emscripten;
 using namespace QuantLib;
 using json = nlohmann::json;
 
@@ -447,9 +447,9 @@ namespace
     catch (...) { return "unknown error"; }
   };
 
-  //EMSCRIPTEN_BINDINGS(quantlib) { emscripten::function("calcuateOption", &calcuateOption); }
+  EMSCRIPTEN_BINDINGS(quantlib) { emscripten::function("calcuateOption", &calcuateOption); }
 }
-
+/*
 int main(int, char* []) {
  
     try {
@@ -481,3 +481,4 @@ int main(int, char* []) {
         return 1;
     }
 }
+*/
