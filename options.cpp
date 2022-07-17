@@ -56,6 +56,8 @@ namespace
     Settings::instance().evaluationDate() = oP.todaysDate;
     Volatility impliedVolatility(oP.optionPrice);
 
+    oP.request["ImpliedVolatility"] = impliedVolatility;
+
     std::vector<Date> exerciseDates;
     for (Integer i = 1; i <= 4; i++)
       exerciseDates.push_back(oP.settlementDate + 3 * i * Months);
@@ -125,6 +127,8 @@ namespace
     DayCounter dayCounter = Actual365Fixed();
     Settings::instance().evaluationDate() = oP.todaysDate;
     Volatility impliedVolatility(oP.optionPrice);
+
+    oP.request["ImpliedVolatility"] = impliedVolatility;
 
     std::vector<Date> exerciseDates;
     for (Integer i = 1; i <= 4; i++)
@@ -271,6 +275,8 @@ namespace
     Settings::instance().evaluationDate() = oP.todaysDate;
     Volatility impliedVolatility(oP.optionPrice);
 
+    oP.request["ImpliedVolatility"] = impliedVolatility;
+
     std::vector<Date> exerciseDates;
     for (Integer i = 1; i <= 4; i++)
       exerciseDates.push_back(oP.settlementDate + 3 * i * Months);
@@ -411,8 +417,7 @@ namespace
   };
 
   std::string calcuateOption(std::string data) {
-    try 
-    {
+    try {
       json request = json::parse(data);
 
       optionParameters oP;
@@ -476,4 +481,3 @@ int main(int, char* []) {
         return 1;
     }
 }
-
